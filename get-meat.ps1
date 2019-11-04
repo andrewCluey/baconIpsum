@@ -36,6 +36,8 @@ param(
     [Parameter(Mandatory=$false)]
     [switch]$makeItSpicy,
     [Parameter(Mandatory=$false)]
+    [switch]$genHTML,
+    [Parameter(Mandatory=$false)]
     [int]$Paras = 1
     )
 
@@ -44,14 +46,33 @@ Process
     {
         Try
         {    # Request a Spicy jalapeno starter
-            if ($MakeItSpicy) {
+            if ($makeItSpicy){
+                $spicy = "1"
+            }
+            else {
+                $spicy = "0"
+            }
+            if ($genHTML) {
+                Remove-Item ./images/index.html -ErrorAction Ignore
+                cd ./images
+                $image = Get-ChildItem -name | Select-Object -index $(Random $((Get-ChildItem).count))
+                cd ..
                 $url = "https://baconipsum.com/api/?type=$type&paras=$paras&make-it-spicy=1&format=text"
                 $data = Invoke-WebRequest $url
-                write-host $data
+                $htmldata = @"
+                  <div>
+                  <h1>Bacon Ipsum</h1>
+                  <img src=$image alt="Meat portrait" />
+                  </body>
+                  <p>$data</p>
+                  </div>
+"@
+                New-Item ./images/index.html -ItemType File
+                add-Content ./images/index.html -value $htmldata
             }
             # If no starter, then just return meat and filler
             else {
-                $url = "https://baconipsum.com/api/?type=$type&paras=$paras&format=text"
+                $url = "https://baconipsum.com/api/?type=$type&paras=$paras&make-it-spicy=$spicy&format=text"
                 $data = Invoke-WebRequest $url
                 write-host $data
             }         
