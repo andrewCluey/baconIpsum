@@ -1,8 +1,8 @@
-
 function get-meat
 <#
 .SYNOPSIS
     Gets bacon ipsum
+    
 .DESCRIPTION
 
 .PARAMETER type
@@ -27,6 +27,7 @@ function get-meat
     Author: Andrew Clure
     Date:   October 29th 2019
 #>
+
 {
 # Define parameters 
 param(
