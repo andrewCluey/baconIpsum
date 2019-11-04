@@ -19,7 +19,7 @@ function get-meat
     Get-Meat -paras 3 -type all-meat
     This example will return a mass of meat. Donner, Ribs, Salami. Pretty much everything you can think of (thankfully no tripe)
 
-    .EXAMPLE
+.EXAMPLE
     Get-Meat -Paras 2 -Type meat-and-filler -MakeItSpicy
     This will return 2 paragraphs of meat with ipsum filler, with a spicy entree.
 
@@ -39,7 +39,7 @@ param(
     [int]$Paras = 1
     )
 
-# Main fucntion block
+# Main function block
 Process
     {
         Try

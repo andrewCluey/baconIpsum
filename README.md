@@ -21,4 +21,4 @@ Boudin salami leberkas adipisicing dolore quis in picanha jowl turkey t-bone dol
 ## Future enhancements
 Feature enhancements currently being developed include:
 - Generate html page with random pictures of meat sculptures
-- An 'email me' or 'Slack me' option to have the meat sent directly to your inbox/channel
+- An 'email me' or 'Slack me' option to have the meat sent directly to your inbox/
